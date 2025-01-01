@@ -2,6 +2,8 @@ package com.library.library.entities;
 
 import java.util.Date;
 
+import com.library.library.enums.StatusEnum;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,11 +19,6 @@ import jakarta.persistence.UniqueConstraint;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "id_livro", "status" }))
 public class Reserva {
-  public enum StatusEnum {
-    ATIVA,
-    CONCLUIDA,
-    ATRASADA
-  }
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,9 +2,13 @@ package com.library.library.entities;
 
 import java.util.List;
 
+import com.library.library.enums.Papel;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,8 +30,9 @@ public class Usuario {
   @Column(nullable = false, unique = true)
   private String senha;
 
-  @Column(nullable = false)
-  private Boolean tipo;
+  @Enumerated(EnumType.STRING)
+  @Column(nullable = false, updatable = false)
+  private Papel tipo;
 
   @Column(nullable = false)
   private Integer reservaDisponiveis;
@@ -67,11 +72,11 @@ public class Usuario {
     this.senha = senha;
   }
 
-  public Boolean getTipo() {
+  public Papel getTipo() {
     return tipo;
   }
 
-  public void setTipo(Boolean tipo) {
+  public void setTipo(Papel tipo) {
     this.tipo = tipo;
   }
 
