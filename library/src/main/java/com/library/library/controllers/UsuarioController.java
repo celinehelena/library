@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.library.library.security.AuthenticationService;
 
 @RestController
-public class AutheticationController {
+public class UsuarioController {
   @Autowired
   private final AuthenticationService authenticationService;
 
-  public AutheticationController(AuthenticationService authenticationService) {
+  public UsuarioController(AuthenticationService authenticationService) {
     this.authenticationService = authenticationService;
   }
 
@@ -20,5 +20,4 @@ public class AutheticationController {
   public String authenticate(Authentication authentication) {
     return authenticationService.authenticate(authentication);
   }
-
 }
