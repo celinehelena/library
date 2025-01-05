@@ -13,8 +13,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
 @Entity
+@Data
 public class Usuario {
 
   @Id
@@ -22,12 +25,15 @@ public class Usuario {
   private Long id;
 
   @Column(nullable = false)
+  @NotBlank(message = "O campo 'nome' é obrigatório.")
   private String nome;
 
   @Column(nullable = false, unique = true)
+  @NotBlank(message = "O campo 'email' é obrigatório.")
   private String email;
 
   @Column(nullable = false, unique = true)
+  @NotBlank(message = "O campo 'senha' é obrigatório.")
   private String senha;
 
   @Enumerated(EnumType.STRING)
