@@ -17,7 +17,7 @@ public class Categoria {
   private Long id;
 
   @Column(nullable = false)
-  private String nome_categoria;
+  private String nome;
 
   @Column(nullable = false)
   private String descricao;
@@ -33,12 +33,12 @@ public class Categoria {
     this.id = id;
   }
 
-  public String getNome_categoria() {
-    return nome_categoria;
+  public String getNome() {
+    return nome;
   }
 
   public void setNome_categoria(String nome_categoria) {
-    this.nome_categoria = nome_categoria;
+    this.nome = nome_categoria;
   }
 
   public String getDescricao() {

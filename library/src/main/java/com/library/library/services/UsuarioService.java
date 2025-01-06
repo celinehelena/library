@@ -1,7 +1,8 @@
 package com.library.library.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-//import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,10 +14,6 @@ import com.library.library.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-
-  // private static final String PASSWORD_REGEX = "^(?=.*[a-zA-Z]).{6,}$";
-  // private static final Pattern pattern = Pattern.compile(PASSWORD_REGEX);
-
   @Autowired
   private PasswordEncoder passwordEncoder;
 
@@ -51,5 +48,19 @@ public class UsuarioService {
     usuarioExistente.setSenha(senhaCrip);
 
     return usuarioRepository.save(usuarioExistente);
+  }
+
+  public List<String> findUser(Long id) {
+    Usuario usuario = usuarioRepository.findById(id);
+    if (usuario == null) {
+      throw new IllegalArgumentException("Usuário não encontrado com o ID: " + id);
+    }
+    
+    List<String> informacoes = new ArrayList<>();
+    informacoes.add("ID: " + usuario.getId());
+    informacoes.add("Nome: " + usuario.getNome());
+    informacoes.add("Email: " + usuario.getEmail());
+    informacoes.add("Reservas Disponíveis: " + usuario.getReservaDisponiveis());
+    return informacoes;
   }
 }
