@@ -50,12 +50,12 @@ public class UsuarioService {
     return usuarioRepository.save(usuarioExistente);
   }
 
-  public List<String> findUser(Long id) {
+  public List<String> findUserId(Long id) {
     Usuario usuario = usuarioRepository.findById(id);
     if (usuario == null) {
       throw new IllegalArgumentException("Usuário não encontrado com o ID: " + id);
     }
-    
+
     List<String> informacoes = new ArrayList<>();
     informacoes.add("ID: " + usuario.getId());
     informacoes.add("Nome: " + usuario.getNome());

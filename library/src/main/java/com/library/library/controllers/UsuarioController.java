@@ -66,7 +66,7 @@ public class UsuarioController {
   @Secured(value = { "ROLE_USUARIO" })
   public ResponseEntity<?> buscarUsuarioId(@PathVariable Long id) {
     try {
-      List<String> informacoes = usuarioService.findUser(id);
+      List<String> informacoes = usuarioService.findUserId(id);
       return ResponseEntity.status(HttpStatus.CREATED).body(informacoes);
     } catch (IllegalArgumentException e) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
