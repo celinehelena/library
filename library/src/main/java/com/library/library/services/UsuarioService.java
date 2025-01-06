@@ -38,4 +38,18 @@ public class UsuarioService {
 
     return usuarioRepository.save(usuario);
   }
+
+  public Usuario update(Long id, Usuario usuarioAtualizado) {
+    Usuario usuarioExistente = usuarioRepository.findById(id);
+    if (usuarioExistente == null) {
+      throw new IllegalArgumentException("Usuário não encontrado com o ID: " + id);
+    }
+    String senhaEnviada = usuarioAtualizado.getSenha();
+    String senhaCrip = passwordEncoder.encode(senhaEnviada);
+    usuarioExistente.setNome(usuarioAtualizado.getNome());
+    usuarioExistente.setEmail(usuarioAtualizado.getEmail());
+    usuarioExistente.setSenha(senhaCrip);
+
+    return usuarioRepository.save(usuarioExistente);
+  }
 }

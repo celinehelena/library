@@ -40,7 +40,6 @@ public class Usuario {
   @Column(nullable = false, updatable = false)
   private Papel tipo;
 
-  @Column(nullable = false)
   private Integer reservaDisponiveis;
 
   @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
@@ -93,5 +92,4 @@ public class Usuario {
   public void setReservaDisponiveis(Integer reservaDisp) {
     this.reservaDisponiveis = reservaDisp;
   }
-
 }

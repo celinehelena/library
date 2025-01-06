@@ -5,11 +5,14 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,6 +46,17 @@ public class UsuarioController {
       return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuario);
     } catch (RuntimeException e) {
       return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
+  }
+
+  @PutMapping("/usuarios/{id}")
+  @Secured(value = { "ROLE_ADMIN", "ROLE_USUARIO" })
+  public ResponseEntity<?> atualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
+    try {
+      Usuario novoUsuario = usuarioService.update(id, usuario);
+      return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuario);
+    } catch (IllegalArgumentException e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
   }
 
