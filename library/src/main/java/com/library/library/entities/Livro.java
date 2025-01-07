@@ -2,6 +2,8 @@ package com.library.library.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,6 +31,7 @@ public class Livro {
 
   @ManyToOne
   @JoinColumn(name = "id_categoria", nullable = false)
+  @JsonBackReference
   private Categoria categoria;
 
   public Long getId() {
