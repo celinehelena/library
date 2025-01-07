@@ -28,7 +28,7 @@ public class Livro {
   private String autor;
 
   @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, orphanRemoval = true)
-  @JsonManagedReference
+  @JsonManagedReference("livro-reservas")
   private List<Reserva> reservas;
 
   @ManyToOne

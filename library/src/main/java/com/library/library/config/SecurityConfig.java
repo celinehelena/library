@@ -46,6 +46,7 @@ public class SecurityConfig {
             auth -> auth
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/cadastro").permitAll()
+                .requestMatchers("/reservas").permitAll()
                 .anyRequest().authenticated())
         .httpBasic(Customizer.withDefaults())
         .oauth2ResourceServer(

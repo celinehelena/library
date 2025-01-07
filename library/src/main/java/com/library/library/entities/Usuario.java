@@ -44,7 +44,7 @@ public class Usuario {
   private Integer reservaDisponiveis;
 
   @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-  @JsonManagedReference
+  @JsonManagedReference("usuario-reservas")
   private List<Reserva> reservas;
 
   public Long getId() {

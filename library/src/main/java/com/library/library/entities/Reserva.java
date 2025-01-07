@@ -33,12 +33,12 @@ public class Reserva {
 
   @ManyToOne
   @JoinColumn(name = "id_usuario", nullable = false)
-  @JsonBackReference
+  @JsonBackReference("usuario-reservas")
   private Usuario usuario;
 
   @ManyToOne
   @JoinColumn(name = "id_livro", nullable = false)
-  @JsonBackReference
+  @JsonBackReference("livro-reservas")
   private Livro livro;
 
   public Long getId() {
