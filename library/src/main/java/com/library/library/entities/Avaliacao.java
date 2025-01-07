@@ -1,5 +1,7 @@
 package com.library.library.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,10 +24,12 @@ public class Avaliacao {
 
   @ManyToOne
   @JoinColumn(name = "id_usuario", nullable = false)
+  @JsonBackReference
   private Usuario usuario;
 
   @ManyToOne
   @JoinColumn(name = "id_livro", nullable = false)
+  @JsonBackReference
   private Livro livro;
 
   public Long getId() {

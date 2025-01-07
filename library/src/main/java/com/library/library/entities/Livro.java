@@ -2,6 +2,9 @@ package com.library.library.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,9 +28,11 @@ public class Livro {
   private String autor;
 
   @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonManagedReference
   private List<Reserva> reservas;
 
   @ManyToOne
+  @JsonBackReference
   @JoinColumn(name = "id_categoria", nullable = false)
   private Categoria categoria;
 

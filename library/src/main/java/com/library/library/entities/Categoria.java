@@ -2,6 +2,8 @@ package com.library.library.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +25,7 @@ public class Categoria {
   private String descricao;
 
   @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+  @JsonManagedReference
   private List<Livro> livros;
 
   public Long getId() {

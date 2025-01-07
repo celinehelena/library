@@ -2,6 +2,7 @@ package com.library.library.entities;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.library.library.enums.StatusEnum;
 
 import jakarta.persistence.Column;
@@ -32,10 +33,12 @@ public class Reserva {
 
   @ManyToOne
   @JoinColumn(name = "id_usuario", nullable = false)
+  @JsonBackReference
   private Usuario usuario;
 
   @ManyToOne
   @JoinColumn(name = "id_livro", nullable = false)
+  @JsonBackReference
   private Livro livro;
 
   public Long getId() {
