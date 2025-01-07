@@ -43,14 +43,31 @@ public class AvaliacaoService {
     newAvaliacao.setLivro(livro);
     return avaliacaoRepository.save(newAvaliacao);
   }
-  public List<Object[]> findAvaliacaoById(Long id){
+
+  public List<Object[]> findAvaliacaoById(Long id) {
     Optional<Avaliacao> avaliacaoExist = avaliacaoRepository.findById(id);
     if (avaliacaoExist == null) {
       throw new IllegalArgumentException("Livro não encontrado");
     }
     List<Object[]> avaliacaoList = avaliacaoRepository.finduUsuarioAndLivroByAvaliacaoId(id);
-    return avaliacaoRepository.finduUsuarioAndLivroByAvaliacaoId(id);
+    return avaliacaoList;
 
+  }
+
+  public List<Avaliacao> findByLivroId(Long id_livro) {
+    List<Avaliacao> avaliacoes = avaliacaoRepository.findByLivroId(id_livro);
+    if (avaliacoes.isEmpty()) {
+      throw new IllegalArgumentException("Avaliação de Livro não encontrado");
+    }
+    return avaliacoes;
+  }
+
+  public List<Avaliacao> findByUsuarioId(Long id_usuario) {
+    List<Avaliacao> avaliacoes = avaliacaoRepository.findByLivroId(id_usuario);
+    if (avaliacoes.isEmpty()) {
+      throw new IllegalArgumentException("Avaliação de Livro não encontrado");
+    }
+    return avaliacoes;
   }
 
 }
