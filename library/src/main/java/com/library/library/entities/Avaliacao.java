@@ -9,17 +9,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Entity
+@Data
 public class Avaliacao {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   @Column(nullable = false)
+  @NotNull(message = "O campo nota é obrigatório.")
   private Integer nota;
 
   @Column(nullable = false)
+  @NotBlank(message = "O campo comentário é obrigatório")
   private String comentario;
 
   @ManyToOne
@@ -68,8 +74,8 @@ public class Avaliacao {
     return livro;
   }
 
-  public void setLivro(Livro livro) {
-    this.livro = livro;
+  public void setLivro(Livro livroExist) {
+    this.livro = livroExist;
   }
 
 }

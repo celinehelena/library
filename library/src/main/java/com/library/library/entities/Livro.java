@@ -32,8 +32,8 @@ public class Livro {
   private List<Reserva> reservas;
 
   @ManyToOne
-  @JsonBackReference
   @JoinColumn(name = "id_categoria", nullable = false)
+  @JsonBackReference
   private Categoria categoria;
 
   public Long getId() {

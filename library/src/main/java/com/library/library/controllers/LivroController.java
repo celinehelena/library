@@ -3,6 +3,7 @@ package com.library.library.controllers;
 import com.library.library.entities.Livro;
 import com.library.library.services.LivroService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,12 +21,14 @@ public class LivroController {
 
     // Listar todos os livros
     @GetMapping
+    @Secured(value = { "ROLE_USUARIO", "ROLE_ADMIN"})
     public ResponseEntity<List<Livro>> listarTodos() {
         return ResponseEntity.ok(livroService.listarTodosLivros());
     }
 
     // Buscar livro por ID
     @GetMapping("/{id}")
+    @Secured(value = { "ROLE_USUARIO", "ROLE_ADMIN" })
     public ResponseEntity<Livro> buscarPorId(@PathVariable Long id) {
         Optional<Livro> livro = livroService.buscarPorId(id);
         return livro.map(ResponseEntity::ok)
@@ -34,12 +37,14 @@ public class LivroController {
 
     // Buscar por título ou autor
     @GetMapping("/busca")
+    @Secured(value = { "ROLE_USUARIO", "ROLE_ADMIN" })
     public ResponseEntity<List<Livro>> buscarPorTituloOuAutor(@RequestParam String query) {
         return ResponseEntity.ok(livroService.buscarPorTituloOuAutor(query));
     }
 
     // Adicionar livro
     @PostMapping
+    @Secured(value = { "ROLE_ADMIN" })
     public ResponseEntity<Livro> adicionarLivro(@RequestBody Livro livro) {
         return ResponseEntity.ok(livroService.adicionarLivro(livro));
     }
