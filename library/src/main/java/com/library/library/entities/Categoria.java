@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Categoria {
@@ -19,9 +20,11 @@ public class Categoria {
   private Long id;
 
   @Column(nullable = false)
+  @NotBlank(message = "O campo nome é obrigatório.")
   private String nome;
 
   @Column(nullable = false)
+  @NotBlank(message = "O campo descrição é obrigatório.")
   private String descricao;
 
   @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
