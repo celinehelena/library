@@ -2,6 +2,7 @@ package com.library.library.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.library.library.enums.Papel;
 
 import jakarta.persistence.CascadeType;
@@ -43,6 +44,7 @@ public class Usuario {
   private Integer reservaDisponiveis;
 
   @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+  @JsonManagedReference("usuario-reservas")
   private List<Reserva> reservas;
 
   public Long getId() {

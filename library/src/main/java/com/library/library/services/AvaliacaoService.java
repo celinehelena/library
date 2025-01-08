@@ -1,6 +1,7 @@
 package com.library.library.services;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,14 +44,13 @@ public class AvaliacaoService {
     newAvaliacao.setLivro(livro);
     return avaliacaoRepository.save(newAvaliacao);
   }
-
-  public List<Object[]> findAvaliacaoById(Long id) {
+  public List<Map<String, Object>> findAvaliacaoById(Long id){
     Optional<Avaliacao> avaliacaoExist = avaliacaoRepository.findById(id);
     if (avaliacaoExist == null) {
       throw new IllegalArgumentException("Livro não encontrado");
     }
-    List<Object[]> avaliacaoList = avaliacaoRepository.finduUsuarioAndLivroByAvaliacaoId(id);
-    return avaliacaoList;
+    
+    return avaliacaoRepository.finduUsuarioAndLivroByAvaliacaoId(id);
 
   }
 

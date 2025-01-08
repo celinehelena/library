@@ -3,6 +3,7 @@ package com.library.library.entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -27,6 +28,7 @@ public class Livro {
   private String autor;
 
   @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonManagedReference("livro-reservas")
   private List<Reserva> reservas;
 
   @ManyToOne

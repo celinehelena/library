@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
 
@@ -21,5 +22,5 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
                 "JOIN usuario on avaliacao.id_usuario = usuario.id "+
                 "JOIN livro ON avaliacao.id_usuario = livro.id "+
                 "WHERE avaliacao.id = :id", nativeQuery= true)
-    List<Object[]> finduUsuarioAndLivroByAvaliacaoId(@Param("id") Long id);
+    List<Map<String, Object>> finduUsuarioAndLivroByAvaliacaoId(@Param("id") Long id);
 }

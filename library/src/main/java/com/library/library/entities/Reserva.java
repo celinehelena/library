@@ -2,6 +2,7 @@ package com.library.library.entities;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.library.library.enums.StatusEnum;
 
 import jakarta.persistence.Column;
@@ -13,11 +14,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "id_livro", "status" }))
 public class Reserva {
 
   @Id
@@ -29,13 +28,15 @@ public class Reserva {
 
   @Enumerated(EnumType.STRING)
   private StatusEnum status;
-
+  
   @ManyToOne
   @JoinColumn(name = "id_usuario", nullable = false)
+  @JsonBackReference("usuario-reservas")
   private Usuario usuario;
 
   @ManyToOne
   @JoinColumn(name = "id_livro", nullable = false)
+  @JsonBackReference("livro-reservas")
   private Livro livro;
 
   public Long getId() {

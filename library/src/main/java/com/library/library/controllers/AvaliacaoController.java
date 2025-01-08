@@ -34,7 +34,7 @@ public class AvaliacaoController {
   @Secured(value = { "ROLE_ADMIN", "ROLE_USUARIO" })
   public ResponseEntity<?> buscarAvaliacao(@PathVariable Long id_avaliacao){
     try {
-      List<Object[]> avaliacoes = avaliacaoService.findAvaliacaoById(id_avaliacao);
+      List<Map<String, Object>> avaliacoes = avaliacaoService.findAvaliacaoById(id_avaliacao);
       return ResponseEntity.status(HttpStatus.CREATED).body(avaliacoes);
     } catch (IllegalArgumentException e) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
