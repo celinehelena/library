@@ -1,6 +1,6 @@
 # 📚 API de Biblioteca Digital
 
-Este projeto é uma API REST desenvolvida com Spring Boot que simula o funcionamento de uma **biblioteca digital**. O sistema permite que usuários reservem livros, deixem avaliações, e que administradores gerenciem o acervo e monitorem o uso da plataforma.
+Este projeto é uma API REST desenvolvida com Spring Boot que simula o funcionamento de uma **biblioteca digital**  para cumprimento de uma disciplina de graduação. O sistema permite que usuários reservem livros, deixem avaliações, e que administradores gerenciem o acervo e monitorem o uso da plataforma.
 
 ## 🚀 Funcionalidades
 
@@ -69,5 +69,5 @@ Este projeto é uma API REST desenvolvida com Spring Boot que simula o funcionam
 4. Acesse: http://localhost:8080
 
 ## 👩‍💻Desenvolvido por:
-- @celinehelena
-- @MarinnaSouza
+- Celine Andrade: @celinehelena
+- Marinna Souza: @MarinnaSouza
